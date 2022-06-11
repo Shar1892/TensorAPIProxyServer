@@ -20,6 +20,20 @@ router.get('/req/', async (req, res) => {
 	}
 });
 
+router.get('/business/:inn', async (req, res) => {
+	try {
+		const apiRes = await needle(
+			'get',
+			`https://api.sbis.ru/vok-demo/cost-business?inn=${req.params.inn}`
+		);
+		const data = apiRes.body;
+
+		res.status(200).send(data);
+	} catch (error) {
+		res.status(500).send(error);
+	}
+});
+
 // Получаем данные по филиалам компании
 router.get('/branches/:inn', async (req, res) => {
 	try {
