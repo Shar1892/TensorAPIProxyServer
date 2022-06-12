@@ -20,6 +20,7 @@ router.get('/req/', async (req, res) => {
 	}
 });
 
+// Получаем данные о стоимости компании
 router.get('/business/:inn', async (req, res) => {
 	try {
 		const apiRes = await needle(
